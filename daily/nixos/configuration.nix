@@ -45,6 +45,7 @@
 
 	fonts.fonts = with pkgs; [
 		jetbrains-mono
+		fira-code
 	];
 
 	security.rtkit.enable = true;
