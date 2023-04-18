@@ -14,14 +14,7 @@
 	};
 
 	boot.loader = { 
-		grub = {
-			enable = true;
-			version = 2;
-			device = "nodev";
-			efiSupport = true;
-			useOSProber = true;
-		};
-
+		systemd-boot.enable = true;
 		efi.canTouchEfiVariables = true;
 	}; 
 
@@ -37,15 +30,9 @@
 		useXkbConfig = true;
 	};
 
-	users.users.andrei = {
-		isNormalUser = true;
-		extraGroups = [ "wheel" "audio" "video" "input" "power" "network" ];
-		shell = "/run/current-system/sw/bin/zsh";
-	};
-
 	fonts.fonts = with pkgs; [
 		jetbrains-mono
-		fira-code
+		ibm-plex
 	];
 
 	security.rtkit.enable = true;
@@ -66,33 +53,60 @@
 
 	hardware.opengl.enable = true;
 
+	programs = {
+		zsh.enable = true;
+		git.enable = true;
+		tmux.enable = true;
+		
+		fzf = {
+			fuzzyCompletion = true;
+			keybindings = true;
+		};
+	};
+
+	environment.binsh = "${pkgs.dash}/bin/dash";
+
+	users.users.andrei = {
+		isNormalUser = true;
+		extraGroups = [ "wheel" "audio" "video" "input" "power" "network" ];
+		shell = pkgs.zsh;
+		packages = with pkgs; [
+			alacritty
+			ardour
+			audacity
+			brave
+			discord
+			ffmpeg
+			foot
+			gimp
+			swaybg
+			gnome.adwaita-icon-theme
+			grim
+			imagemagick
+			mpc-cli
+			mpd
+			mpv
+			obs-studio
+			river
+			slurp
+			tofi
+			transmission
+			wl-clipboard
+			yambar
+			yt-dlp
+		];
+	};
+
 	environment.systemPackages = with pkgs; [
-		clang
-		exa
+		dash
 		fd
-		ffmpeg
-		firefox
-		foot
 		fzf
-		gimp
-		git
-		imagemagick
-		mpd
-		mpv
+		neovim
 		nnn
-		obs-studio
 		p7zip
-		pamixer
 		ripgrep
-		river
-		tmux
-		tofi
 		vis
 		w3m
-		yambar
-		yt-dlp
-		zig
-		zsh
 	];
 
 	system.stateVersion = "22.11";

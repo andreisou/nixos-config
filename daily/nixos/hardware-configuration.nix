@@ -18,14 +18,14 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F92B-4B37";
-      fsType = "vfat";
-    };
-
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/509f3af9-f1cf-4288-8b21-dbab82f89923";
       fsType = "btrfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/41C5-418A";
+      fsType = "vfat";
     };
 
   swapDevices =
