@@ -5,7 +5,7 @@
 		templates = {
 			daily = {
 				description = "My daily driver configuration";
-				path = "./daily";
+				path = ./daily;
 			};
 		};
 	};
