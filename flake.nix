@@ -1,12 +1,16 @@
 {
-	description = "anddsz's NixOS configuration collection";
+  description = "Daily driving configuration";
 
-	outputs = inputs: {
-		templates = {
-			daily = {
-				description = "My daily driver configuration";
-				path = ./daily;
-			};
-		};
-	};
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  };
+
+  outputs = { nixpkgs, ... } @inputs: {
+    nixosConfigurations = {
+      paris = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./nixos/configuration.nix ];
+      };
+    };
+  };
 }
