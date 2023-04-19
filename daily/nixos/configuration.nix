@@ -33,6 +33,9 @@
 	fonts.fonts = with pkgs; [
 		jetbrains-mono
 		ibm-plex
+		noto-fonts
+		noto-fonts-cjk
+		noto-fonts-emoji
 	];
 
 	security.rtkit.enable = true;
