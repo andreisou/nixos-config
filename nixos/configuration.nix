@@ -52,7 +52,10 @@
 		};
 	};
 
-	xdg.portal.wlr.enable = true;
+	xdg.portal = {
+		enable = true;
+		wlr.enable = true;
+	};
 
 	hardware.opengl.enable = true;
 
@@ -74,15 +77,12 @@
 		extraGroups = [ "wheel" "audio" "video" "input" "power" "network" ];
 		shell = pkgs.zsh;
 		packages = with pkgs; [
-			alacritty
 			ardour
 			audacity
-			brave
-			discord
 			ffmpeg
+			firefox
 			foot
 			gimp
-			swaybg
 			gnome.adwaita-icon-theme
 			grim
 			imagemagick
@@ -92,11 +92,13 @@
 			obs-studio
 			river
 			slurp
+			swaybg
 			tofi
 			transmission
 			wl-clipboard
 			yambar
 			yt-dlp
+			zathura
 		];
 	};
 
@@ -104,9 +106,9 @@
 		dash
 		fd
 		fzf
-		neovim
 		nnn
 		p7zip
+		texlive.combined.scheme-full
 		ripgrep
 		vis
 		w3m
